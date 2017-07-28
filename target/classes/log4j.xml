@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="D:\\batch\\aa.log" />
+		<param name="DatePattern" value="'_'yyyyMMdd" />
+		<param name="ImmediateFlush" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} [%-5.5p] %t [%-40.40c{1}#%-40.40M] %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} [%-4.5p] [%-10.40c{1}] [%-4.20M] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss} [%-4.5p] [%-10.40c{1}] [%-4.20M] %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="jp.co.rakuten_sec" additivity="false">
+		<level value="info" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="java.sql" additivity="false">
+		<level value="info" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="org.springframework.transaction" additivity="false">
+		<level value="info" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+
+</log4j:configuration>
